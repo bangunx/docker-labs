@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  filebrowser:
+    image: filebrowser/filebrowser:latest
+    container_name: filebrowser
+    ports:
+      - "8282:80"  # Ganti sesuai kebutuhan
+    volumes:
+      # - ~/homelabs/filebrowser/data:/srv
+      - ~/homelabs:/srv
+      - ~/homelabs/filebrowser/database:/database
+      - ~/homelabs/filebrowser/config:/config
+    restart: unless-stopped
+

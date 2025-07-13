@@ -1,37 +1,44 @@
-*/  
+# Abaikan semua isi folder dan file
+**
+
+# Izinkan semua folder di level pertama
+!*/
+
+# Izinkan file docker-compose dan backup
 !*/docker-compose.yml
 !*/backup_docker-compose.yml
-!*/bak.promptheus.yml
-!cheeatsheet.md
-!monitor-docker/notes.md
 
-**/config/
-**/data/
-**/work/
-**/library/
-**/postgres/
-**/downloads/
-**/movies/
-**/tvseries/
-**/media/
-**/cache/
-**/.cache/
-**/.aspnet/
-**/log/
-**/logs/
-**/vw-data/
-**/database/
-**/*.xml
-**/*.json
-**/.env
-**/.env.*
+# Izinkan file .md dan .sh di semua subfolder
+!**/*.md
+!**/*.sh
 
-structure.txt
+# Tetap abaikan isi folder data dan config (jika ada)
+**/data/**
+**/config/**
+**/library/**
+**/postgres/**
+**/downloads/**
+**/cache/**
+**/.cache/**
+**/.aspnet/**
+**/log/**
+**/logs/**
+**/database/**
+**/media/**
+**/vw-data/**
 
-.vscode/
-.idea/
-*.swp
-*.swo
+# Abaikan environment file dan konfigurasi lainnya
+*.env
+*.env.*
+*.xml
+*.json
+*.log
+
+# Abaikan file sistem/editor
 .DS_Store
 Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
 

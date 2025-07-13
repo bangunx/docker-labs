@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  bazarr:
+    container_name: bazarr
+    image: ghcr.io/hotio/bazarr
+    ports:
+      - "6767:6767"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - UMASK=002
+      - TZ=Etc/UTC
+      - WEBUI_PORTS=6767/tcp,6767/udp
+    volumes:
+      - ~/homelabs/bazarr/config:/config
+      - ~/homelabs/bazarr/data:/data
+      - /home/hades/homelabs/plex/movies:/data/
+    restart: unless-stopped
+

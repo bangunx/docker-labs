@@ -1,0 +1,20 @@
+services:
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Jakarta
+      - VERSION=docker
+      - PLEX_CLAIM=claim-biWW1ckdLhRkzZV_vizP
+    volumes:
+      - /home/hades/homelabs/plex/config_official:/config
+      - /home/hades/homelabs/mediacenter/media/movies:/data/movies
+      - /home/hades/homelabs/mediacenter/media/anime:/data/anime
+      - /home/hades/homelabs/mediacenter/media/tvseries:/data/tvseries
+      - /home/hades/homelabs/mediacenter/media/downloads:/downloads
+      
+    restart: unless-stopped
+

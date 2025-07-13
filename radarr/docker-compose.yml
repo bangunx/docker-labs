@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Jakarta
+    volumes:
+      - ~/homelabs/radarr/config:/config
+      # - ~/homelabs/radarr/movies:/movies
+      - /home/hades/homelabs/mediacenter/media/movies:/data/movies
+      - /home/hades/homelabs/mediacenter/media/anime:/data/anime
+      - /home/hades/homelabs/mediacenter/media/tvseries:/data/tvseries
+      - /home/hades/homelabs/mediacenter/media/downloads:/downloads
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+

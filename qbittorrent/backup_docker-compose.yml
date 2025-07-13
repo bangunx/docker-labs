@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=1000                         # Ganti dengan UID user host kamu
+      - PGID=1000                         # Ganti dengan GID user host kamu
+      - TZ=Asia/Jakarta                   # Ganti sesuai zona waktu kamu
+      - WEBUI_PORT=8181                   # Ganti ke port baru
+      - TORRENTING_PORT=6881
+    volumes:
+      - ./config:/config
+      - ./downloads:/downloads
+      - /home/hades/homelabs/plex/movies:/data/movies
+      - /home/hades/homelabs/plex/movies:/data/anime
+      - /home/hades/homelabs/plex/movies:/data/tvseries
+      - /home/hades/homelabs/plex/downloads:/downloads
+      
+    ports:
+      - 8181:8181                         # WebUI: host:container
+      - 6881:6881                         # TCP port
+      - 6881:6881/udp                     # UDP port
+    restart: unless-stopped
+

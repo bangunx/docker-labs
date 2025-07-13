@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  adguardhome:
+    image: adguard/adguardhome
+    container_name: adguardhome
+    restart: unless-stopped
+    volumes:
+      - /home/hades/homelabs/adguardhome/work:/opt/adguardhome/work
+      - /home/hades/homelabs/adguardhome/conf:/opt/adguardhome/conf
+    ports:
+      - "5353:53/tcp"
+      - "5353:53/udp"
+      - "6767:67/udp"
+      - "6868:68/udp"
+      - "8880:80/tcp"       # http dashboard
+      - "8443:443/tcp"      # https dashboard
+      - "8443:443/udp"
+      - "3300:3000/tcp"     # setup awal
+      - "8853:853/tcp"      # DNS-over-TLS
+      - "8784:784/udp"      # DNS-over-QUIC
+      - "8853:853/udp"
+      - "5444:5443/tcp"     # DNSCrypt
+      - "5444:5443/udp"
+
