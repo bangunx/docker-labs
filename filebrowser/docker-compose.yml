@@ -8,8 +8,8 @@ services:
       - "8282:80"  # Ganti sesuai kebutuhan
     volumes:
       # - ~/homelabs/filebrowser/data:/srv
-      - ~/homelabs:/srv
-      - ~/homelabs/filebrowser/database:/database
-      - ~/homelabs/filebrowser/config:/config
+      - ~/:/srv
+      - ~/homelabs/docker-labs/filebrowser/database:/database
+      - ~/homelabs/docker-labs/filebrowser/config:/config
     restart: unless-stopped
 
