@@ -23,6 +23,7 @@ docker logs -f cloudflared
 
 ```
 ```
+#env
 ```bash
 CLOUDFLARED_TOKEN=
 ```
