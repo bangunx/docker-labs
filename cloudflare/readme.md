@@ -22,7 +22,7 @@ docker logs -f cloudflared
 
 ```
 ```
-```
+```bash
 CLOUDFLARED_TOKEN=
 ```
 
