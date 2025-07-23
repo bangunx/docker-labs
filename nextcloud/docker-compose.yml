@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  nextcloud:
+    image: nextcloud:latest
+    container_name: nextcloud
+    restart: unless-stopped
+    ports:
+      - "27880:80"
+    volumes:
+      - nextcloud_data:/var/www/html
+      - ./apps:/var/www/html/custom_apps
+      - ./config:/var/www/html/config
+      - ./data:/var/www/html/data
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_DB=nextcloud
+      - POSTGRES_USER=nextcloud
+      - POSTGRES_PASSWORD=your_secure_password
+      - NEXTCLOUD_ADMIN_USER=hades
+      - NEXTCLOUD_ADMIN_PASSWORD=arema123123123
+      - NEXTCLOUD_TRUSTED_DOMAINS=localhost 192.168.31.28:27880 your.domain.com
+      - OVERWRITEHOST=192.168.31.28:27880
+      - OVERWRITEPROTOCOL=http
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: postgres:15-alpine
+    container_name: nextcloud_db
+    restart: unless-stopped
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=nextcloud
+      - POSTGRES_USER=nextcloud
+      - POSTGRES_PASSWORD=your_secure_password
+
+  redis:
+    image: redis:alpine
+    container_name: nextcloud_redis
+    restart: unless-stopped
+    command: redis-server --requirepass your_redis_password
+    volumes:
+      - redis_data:/data
+
+volumes:
+  nextcloud_data:
+  postgres_data:
+  redis_data:
